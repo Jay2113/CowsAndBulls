@@ -17,8 +17,7 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        startNewGame()
     }
     
     func numberOfRows(in tableView: NSTableView) -> Int {
@@ -46,5 +45,17 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
     }
     
     @IBAction func submitGuess(_ sender: Any) {
+    }
+    
+    func startNewGame() {
+        guess.stringValue = ""
+        guesses.removeAll()
+        answer = ""
+        var numbers = Array(0...9)
+        numbers.shuffle()
+        for _ in 0..<4 {
+            answer.append(String(numbers.removeLast()))
+        }
+        tableView.reloadData()
     }
 }
