@@ -9,7 +9,7 @@
 import Cocoa
 
 class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelegate {
-
+    
     @IBOutlet var tableView: NSTableView!
     @IBOutlet var guess: NSTextField!
     var answer = ""
@@ -23,7 +23,7 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
     func numberOfRows(in tableView: NSTableView) -> Int {
         return guesses.count
     }
-
+    
     func result(for guess: String) -> String {
         var bulls = 0
         var cows = 0
@@ -71,12 +71,13 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
         
         // did the player win?
         let resultString = result(for: guessString)
-        if resultString.contains("4b")
-        let alert = NSAlert()
-        alert.messageText = "You win"
-        alert.informativeText = "Congratulations! Click OK to play again."
-        alert.runModal()
-        startNewGame()
+        if resultString.contains("4b") {
+            let alert = NSAlert()
+            alert.messageText = "You win"
+            alert.informativeText = "Congratulations! Click OK to play again."
+            alert.runModal()
+            startNewGame()
+        }
     }
     
     func startNewGame() {
